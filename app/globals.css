@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/**
+ * Remind - Global Styles
+ * Eastern Minimalist Mysticism Design System
+ * Supports light/dark mode
+ */
+
+:root {
+  /* Dark Mode - PyCharm-inspired Soft Charcoal */
+  --ink: #2b2b2b;
+  --silk: #d7dae0;
+  --gold: #d4af37;
+  --cinnabar: #c41e3a;
+  --panel: #3c3f41;
+  --burn-ash: #2a2623;
+}
+
+:root[data-theme='light'] {
+  /* Light Mode - Apple Notes Warm Paper */
+  --ink: #f7f6f2;
+  --silk: #2b2b2b;
+  --gold: #b08a3e;
+  --cinnabar: #b01428;
+  --panel: #ffffff;
+  --burn-ash: #efe3cf;
+}
+
+@theme inline {
+  /* Custom color tokens */
+  --color-ink: var(--ink);
+  --color-silk: var(--silk);
+  --color-gold: var(--gold);
+  --color-cinnabar: var(--cinnabar);
+  --color-panel: var(--panel);
+
+  /* Font families */
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-serif: var(--font-cinzel), Cinzel, serif;
+}
+
+body {
+  background: var(--ink);
+  color: var(--silk);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar - The Golden Path */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+  opacity: 0.8;
+}
+
+/* Selection - Golden Highlight */
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* Burn Down Effect */
+.burn-surface {
+  position: relative;
+  overflow: hidden;
+  background: var(--burn-ash);
+}
+
+.burn-content {
+  position: relative;
+  height: 100%;
+  will-change: opacity, filter, transform;
+  transform-origin: center;
+  z-index: 1;
+}
+
+.burn-overlay {
+  position: absolute;
+  inset: -6%;
+  background: radial-gradient(circle at center, rgba(255, 173, 102, 0.0) 36%, rgba(255, 200, 128, 0.55) 54%, rgba(255, 150, 80, 0.65) 66%, rgba(255, 224, 170, 0.55) 76%, rgba(10, 10, 10, 0.0) 90%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0;
+  will-change: clip-path, opacity, filter;
+  z-index: 2;
+}
+
+.burn-surface.burning .burn-content {
+  animation: burnFadeFull 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.burn-surface.burning .burn-overlay {
+  animation: burnOverlayFade 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes burnFadeFull {
+  0% {
+    opacity: 1;
+    filter: blur(0) brightness(1) saturate(1);
+    transform: scale(1);
+  }
+  45% {
+    opacity: 0.75;
+    filter: blur(1px) brightness(0.98) saturate(0.96);
+    transform: scale(0.94);
+  }
+  75% {
+    opacity: 0.35;
+    filter: blur(2.5px) brightness(0.94) saturate(0.9);
+    transform: scale(0.82);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(6px) brightness(0.85) saturate(0.85);
+    transform: scale(0.78);
+  }
+}
+
+@keyframes burnOverlayFade {
+  0% {
+    opacity: 0.25;
+    filter: blur(6px) brightness(1.02) saturate(1.05);
+  }
+  55% {
+    opacity: 0.35;
+    filter: blur(8px) brightness(1.06) saturate(1.08);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(12px) brightness(1.02) saturate(1.02);
+  }
+}
+
+/* Focus States - The Golden Ring */
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* TipTap Editor Styles */
+.ProseMirror {
+  min-height: 200px;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.ProseMirror code {
+  background-color: var(--panel);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  color: var(--gold);
+}
+
+.ProseMirror pre {
+  background-color: var(--panel);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.ProseMirror pre code {
+  background: none;
+  padding: 0;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid var(--gold);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3 {
+  color: var(--gold);
+  font-family: var(--font-serif);
+}
+
+.ProseMirror a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.ProseMirror a:hover {
+  opacity: 0.8;
+}
