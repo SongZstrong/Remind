@@ -24,20 +24,3 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## SEO
-
-SEO baseline files are included:
-
-- `app/robots.ts` -> `/robots.txt`
-- `app/sitemap.ts` -> `/sitemap.xml`
-- `app/manifest.ts` -> `/manifest.webmanifest`
-- `app/opengraph-image.tsx` -> `/opengraph-image`
-- `app/twitter-image.tsx` -> `/twitter-image`
-
-Set this environment variable in production:
-
-```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
-```
-
-See [docs/SEO.md](docs/SEO.md) for details and deployment checklist.
